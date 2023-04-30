@@ -55,22 +55,22 @@ const items = ref([
   {
     label: 'Time Picker',
     icon: 'pi pi-fw pi-calendar',
-    to: '/picker'
+    to: '/task2'
   },
   {
     label: 'Сброс значений в Select',
     icon: 'pi pi-fw pi-times-circle',
-    to: '/multiselect'
+    to: '/task3'
   },
   {
     label: 'Многострочный текст в ячейке',
     icon: 'pi pi-fw pi-list',
-    to: '/multiline'
+    to: '/task4'
   },
   {
     label: 'Таблица с поиском',
     icon: 'pi pi-fw pi-cog',
-    to: '/datatable'
+    to: '/task5'
   }
 ]);
 

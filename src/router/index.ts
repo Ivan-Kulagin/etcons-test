@@ -1,30 +1,29 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/InputLinkView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'task1',
+    component: () => import('../views/InputLinkView.vue')
   },
   {
-    path: '/picker',
-    name: 'picker',
+    path: '/task2',
+    name: 'task2',
     component: () => import('../views/TimePickerView.vue')
   },
   {
-    path: '/multiselect',
-    name: 'multiselect',
+    path: '/task3',
+    name: 'task3',
     component: () => import('../views/MultiSelectView.vue')
   },
   {
-    path: '/multiline',
-    name: 'multiline',
+    path: '/task4',
+    name: 'task4',
     component: () => import('../views/MultiLineView.vue')
   },
   {
-    path: '/datatable',
-    name: 'datatable',
+    path: '/task5',
+    name: 'task5',
     component: () => import('../views/DataTableView.vue')
   },
 ]

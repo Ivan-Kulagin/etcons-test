@@ -17,60 +17,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import {onMounted, ref} from 'vue';
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import {ProductService} from "@/service/ProductService";
 
-const tableData = ref([{
-  code: 'f230fh0g3',
-  name: 'Bamboo Watch',
-  description: 'Product Description',
-  price: 65,
-  rating: 5
-},{
-  code: 'f230fh0g3',
-  name: 'Bamboo Watch',
-  description: '[13:36:53] Расчетное время: 9 мин\n' +
-      '[13:36:58] Открыть клапан откачки К1\n' +
-      '[13:36:58] Включить вакуумный насос\n' +
-      '[13:36:58] Закрыть клапан К5\n' +
-      '[13:36:58] Закрыть клапан дистилляции К2\n' +
-      '[13:36:58] Ожидание: 8 с\n' +
-      '[13:37:06] Заливка 2.2мл. в испаритель\n' +
-      '[13:37:06] Заданно 26.50602409638554 шагов\n' +
-      '[13:37:09] Заливка перекиси завершена\n' +
-      '[13:37:09] Открыть клапан дистилляции К2\n' +
-      '[13:42:09] Включить нагрев испарителя\n' +
-      '[13:42:09] Закрыть клапан дистилляции К2\n' +
-      '[13:42:09] конечное давление1.0960040758227925 торр\n' +
-      '[13:42:09] Выпаривание через К2\n' +
-      '[13:42:09] Выпаривание длилось5 мин\n' +
-      '[13:42:09] Откачка до 1 торр\n' +
-      '[13:42:15] Закрыть клапан откачки К1\n' +
-      '[13:43:09] Открыть клапан откачки К1\n' +
-      '[13:43:14] Аппаратное смещение 0 денсит. = -0.313683180809021\n' +
-      '[13:43:14] Закрыть клапан дистилляции К2\n',
-  price: 65,
-  rating: 5
-},{
-  code: 'f230fh0g3',
-  name: 'Bamboo Watch',
-  description: 'Product Description',
-  price: 65,
-  rating: 5
-},{
-  code: 'f230fh0g3',
-  name: 'Bamboo Watch',
-  description: 'Product Description',
-  price: 65,
-  rating: 5
-},{
-  code: 'f230fh0g3',
-  name: 'Bamboo Watch',
-  description: 'Product Description',
-  price: 65,
-  rating: 5
-},])
+const tableData = ref()
+onMounted(() => {
+  // предобработанные данные лога с добавлением переноса строк, полученные из API
+  ProductService.getProcessedMultilineLog().then((data) => (tableData.value = data));
+});
 </script>
 
 <style>
@@ -82,6 +38,7 @@ const tableData = ref([{
 }
 
 .pre {
+  /* для сохранения разрывов строк */
   white-space: pre;
 }
 </style>

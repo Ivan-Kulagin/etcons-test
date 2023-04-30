@@ -1198,6 +1198,49 @@ export const ProductService = {
         ];
     },
 
+    getMultilineLogData() {
+        return [
+            {
+                code: 'f230fh0g3',
+                name: 'Bamboo Watch',
+                description: 'Product Description',
+                price: 65,
+                rating: 5
+            },{
+                code: 'f230fh0g3',
+                name: 'Bamboo Watch',
+                description: '[13:36:53] Расчетное время: 9 мин[13:36:58] Открыть клапан откачки К1[13:36:58] Вклю' +
+                    'чить вакуумный насос[13:36:58] Закрыть клапан К5[13:36:58] Закрыть клапан дистилляции К2[13:' +
+                    '36:58] Ожидание: 8 с[13:37:06] Заливка 2.2мл. в испаритель[13:37:06] Заданно 26.506024096385' +
+                    '54 шагов[13:37:09] Заливка перекиси завершена[13:37:09] Открыть клапан дистилляции К2[13:42:' +
+                    '09] Включить нагрев испарителя[13:42:09] Закрыть клапан дистилляции К2[13:42:09] конечное да' +
+                    'вление1.0960040758227925 торр[13:42:09] Выпаривание через К2[13:42:09] Выпаривание длилось5 ' +
+                    'мин[13:42:09] Откачка до 1 торр[13:42:15] Закрыть клапан откачки К1[13:43:09] Открыть клапан' +
+                    ' откачки К1[13:43:14] Аппаратное смещение 0 денсит. = -0.313683180809021[13:43:14] Закрыть к' +
+                    'лапан дистилляции К2',
+                price: 65,
+                rating: 5
+            },{
+                code: 'f230fh0g3',
+                name: 'Bamboo Watch',
+                description: 'Product Description',
+                price: 65,
+                rating: 5
+            },{
+                code: 'f230fh0g3',
+                name: 'Bamboo Watch',
+                description: 'Product Description',
+                price: 65,
+                rating: 5
+            },{
+                code: 'f230fh0g3',
+                name: 'Bamboo Watch',
+                description: 'Product Description',
+                price: 65,
+                rating: 5
+            },]
+    },
+
     getProductsMini() {
         return Promise.resolve(this.getProductsData().slice(0, 5));
     },
@@ -1216,6 +1259,15 @@ export const ProductService = {
 
     getProductsWithOrders() {
         return Promise.resolve(this.getProductsWithOrdersData());
+    },
+
+    getProcessedMultilineLog() {
+        let data = this.getMultilineLogData()
+        data.forEach(
+            (item) =>
+                item.description = item.description.split("[").join("\n[").replace(/^\n/, '')
+        )
+        return Promise.resolve(data);
     }
 };
 
